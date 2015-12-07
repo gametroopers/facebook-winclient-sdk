@@ -104,7 +104,7 @@ namespace Facebook.Client
                             string[] keyValue = query.Split('=');
                             if (keyValue.Length >= 2)
                             {
-                                if (keyValue[0].Contains("request"))
+                                if (keyValue[0].Contains("request") || keyValue[1].Contains("request"))
                                     request = keyValue[1];
                                 else if (keyValue[0].Contains("to"))
                                     toList.Add(keyValue[1]);
@@ -233,7 +233,7 @@ namespace Facebook.Client
                 queryString = uri.Substring(questionMarkIndex, endIndex - questionMarkIndex);
             
             queryString = queryString.Replace("#", string.Empty).Replace("?", string.Empty);
-            return queryString;
+            return uri;
         }
     }
 }
