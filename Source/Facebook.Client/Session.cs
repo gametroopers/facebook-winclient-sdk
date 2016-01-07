@@ -527,7 +527,11 @@ namespace Facebook.Client
                     }
                     catch (FacebookOAuthException e)
                     {
-                        if (OnSessionStateChanged != null)
+                            if (OnFacebookAuthenticationFinished != null)
+                            {
+                                OnFacebookAuthenticationFinished(null);
+                            }
+                            if (OnSessionStateChanged != null)
                         {
                             OnSessionStateChanged(LoginStatus.LoggedOut);
                         }
